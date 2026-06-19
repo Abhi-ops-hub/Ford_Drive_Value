@@ -213,7 +213,12 @@ st.markdown("""
 # ─────────────────────────────────────────────────────────────────
 @st.cache_data
 def load_data():
-    df = pd.read_csv("Ford_Drive_Value/ford.csv")
+    import os
+    dir_path = os.path.dirname(os.path.realpath(__file__))
+    csv_path = os.path.join(dir_path, "ford.csv")
+    if not os.path.exists(csv_path):
+        csv_path = "Ford_Drive_Value/ford.csv"
+    df = pd.read_csv(csv_path)
     df.columns = df.columns.str.strip()
     df['model'] = df['model'].str.strip()
     df['transmission'] = df['transmission'].str.strip()
