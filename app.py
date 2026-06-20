@@ -215,9 +215,27 @@ st.markdown("""
 def load_data():
     import os
     dir_path = os.path.dirname(os.path.realpath(__file__))
-    csv_path = os.path.join(dir_path, "ford.csv")
-    if not os.path.exists(csv_path):
-        csv_path = "Ford_Drive_Value/ford.csv"
+    
+    # Try multiple potential paths to be robust to different working directories
+    paths_to_try = [
+        os.path.join(dir_path, "data sets", "ford.csv"),
+        os.path.join(dir_path, "ford.csv"),
+        os.path.join("data sets", "ford.csv"),
+        "ford.csv",
+        os.path.join("Ford_Drive_Value", "data sets", "ford.csv"),
+        "Ford_Drive_Value/ford.csv"
+    ]
+    
+    csv_path = None
+    for p in paths_to_try:
+        if os.path.exists(p):
+            csv_path = p
+            break
+            
+    if csv_path is None:
+        # Fallback to default expected path
+        csv_path = os.path.join(dir_path, "data sets", "ford.csv")
+        
     df = pd.read_csv(csv_path)
     df.columns = df.columns.str.strip()
     df['model'] = df['model'].str.strip()

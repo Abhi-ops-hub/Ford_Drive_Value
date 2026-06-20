@@ -62,31 +62,21 @@ The final model is integrated into a web application where users can input vehic
 
 ```
 FORD_DRIVE_VALUE
-
 │
 ├── app.py
 │   └── Streamlit web application
 │
-├── code.ipynb
-│   └── Data preprocessing and analysis
+├── data sets/
+│   ├── ford.csv (Original dataset)
+│   ├── label_encoded.csv (Label encoded dataset)
+│   └── one_hot_encoded.csv (One Hot encoded dataset)
 │
-├── 1hotencodedmodel.ipynb
-│   └── Model training using One Hot Encoding
-│
-├── one_label_encoding_model.ipynb
-│   └── Model training using Label Encoding
-│
-├── ford.csv
-│   └── Original dataset
-│
-├── label_encoded.csv
-│   └── Label encoded dataset
-│
-├── one_hot_encoded.csv
-│   └── One Hot encoded dataset
+├── notebooks/
+│   ├── code.ipynb (Data preprocessing and analysis)
+│   ├── 1hotencodedmodel.ipynb (Model training using One Hot Encoding)
+│   └── one_label_encoding_model.ipynb (Model training using Label Encoding)
 │
 ├── requirements.txt
-│
 └── README.md
 ```
 
